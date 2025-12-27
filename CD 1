@@ -1,0 +1,21 @@
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char ch;
+    FILE *fp = fopen("input.c","r");
+
+    while((ch=fgetc(fp))!=EOF) {
+        if(isspace(ch)) continue;
+
+        if(isalpha(ch))
+            printf("%c : Identifier\n", ch);
+        else if(isdigit(ch))
+            printf("%c : Constant\n", ch);
+        else if(ch=='+'||ch=='-'||ch=='*'||ch=='/'||ch=='=')
+            printf("%c : Operator\n", ch);
+    }
+    fclose(fp);
+    return 0;
+}
